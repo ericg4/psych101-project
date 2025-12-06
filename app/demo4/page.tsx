@@ -19,17 +19,26 @@ export default function Demo4() {
   const [directClaimed, setDirectClaimed] = useState(false);
 
   const handleSpinComplete = (discount: string) => {
+    // This is called when user clicks Continue, with their last spin result
     setWheelSpins((prev) => prev + 1);
     if (discount !== 'Try Again') {
-      setDiscountsReceived((prev) => [...prev, discount]);
+      setDiscountsReceived([discount]); // Only store the last spin result
+    } else {
+      setDiscountsReceived([]); // Clear if last spin was "Try Again"
     }
+  };
+
+  const handleContinueFromWheel = () => {
+    // Move from wheel to direct discount step
+    setStep('direct');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleDirectClaim = () => {
     setDirectClaimed(true);
   };
 
-  const handleContinue = async () => {
+  const handleContinueFromDirect = async () => {
     if (step === 'wheel') {
       setStep('direct');
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -88,20 +97,18 @@ export default function Demo4() {
         <div className="pt-24 p-8">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-3xl font-bold mb-2 text-gray-900 dark:text-gray-100 text-center">Spin the Wheel for a Discount</h1>
-            <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 text-center">
-              You have 3 spins. See what discounts you can win!
-            </p>
-            <WheelSpinner onSpinComplete={handleSpinComplete} maxSpins={3} />
-            {wheelSpins >= 3 && (
-              <div className="mt-8 text-center">
-                <button
-                  onClick={handleContinue}
-                  className="px-8 py-4 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
-                >
-                  Continue to Next Experience
-                </button>
-              </div>
-            )}
+            <div className="bg-blue-50 dark:bg-blue-900/30 border-l-4 border-blue-500 dark:border-blue-400 p-4 mb-6 rounded">
+              <p className="text-gray-700 dark:text-gray-300 font-semibold mb-2">Important:</p>
+              <p className="text-gray-700 dark:text-gray-300">
+                You can spin up to 3 times, but <strong>only your last spin counts</strong> as your final reward.
+                You can continue at any time after your first spin.
+              </p>
+            </div>
+            <WheelSpinner
+              onSpinComplete={handleSpinComplete}
+              onContinue={handleContinueFromWheel}
+              maxSpins={3}
+            />
           </div>
         </div>
       </div>
@@ -122,7 +129,7 @@ export default function Demo4() {
             {directClaimed && (
               <div className="mt-8 text-center">
                 <button
-                  onClick={handleContinue}
+                  onClick={handleContinueFromDirect}
                   className="px-8 py-4 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
                 >
                   Continue to Reflection
@@ -143,7 +150,7 @@ export default function Demo4() {
           <ReflectionQuestions />
           <div className="mt-8 text-center">
             <button
-              onClick={handleContinue}
+              onClick={handleContinueFromDirect}
               className="px-8 py-4 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
             >
               Learn About What You Experienced
