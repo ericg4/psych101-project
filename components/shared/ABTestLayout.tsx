@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import LandingExplanation from './LandingExplanation';
 
 interface ABTestLayoutProps {
   version: 'clean' | 'cluttered';
@@ -24,74 +25,19 @@ export default function ABTestLayout({ version, onStressRating, onEasierChoice }
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    if (showExplanation) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [showExplanation]);
+
   const handleRatingSubmit = () => {
     onStressRating?.(stressRating);
     setShowComparison(true);
   };
 
   if (showExplanation) {
-    return (
-      <div className="min-h-screen pt-24 p-8 bg-gray-50 dark:bg-gray-900">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 space-y-6">
-            <h2 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-gray-100">What You Just Experienced</h2>
-
-            <div className="space-y-6">
-              <section className="bg-blue-50 dark:bg-blue-900/30 border-l-4 border-blue-500 dark:border-blue-400 p-6 rounded">
-                <h3 className="text-xl font-bold mb-3 text-blue-800 dark:text-blue-300">Cognitive Load & Stress</h3>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  When you first saw the page, you experienced <strong>cognitive load</strong>—the mental effort required to process information.
-                  The cluttered layout overwhelmed your working memory (which can only hold about 4±1 chunks of information), while the clean layout
-                  reduced cognitive demand through whitespace and clear visual hierarchy.
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-3">
-                  Your stress rating reflects how the visual complexity affected your emotional state. Research shows that cluttered interfaces
-                  increase cortisol levels and reduce task completion rates by up to 40%.
-                </p>
-              </section>
-
-              <section className="bg-green-50 dark:bg-green-900/30 border-l-4 border-green-500 dark:border-green-400 p-6 rounded">
-                <h3 className="text-xl font-bold mb-3 text-green-800 dark:text-green-300">Perceptual Organization</h3>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  The clean layout used principles of <strong>visual hierarchy</strong> and <strong>whitespace</strong> to guide your attention
-                  automatically. Your brain didn&apos;t have to work hard to find the important information—it was immediately obvious.
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-3">
-                  The cluttered layout violated these principles, forcing your brain to actively search and filter information, which increases
-                  cognitive load and stress.
-                </p>
-              </section>
-
-              <section className="bg-purple-50 dark:bg-purple-900/30 border-l-4 border-purple-500 dark:border-purple-400 p-6 rounded">
-                <h3 className="text-xl font-bold mb-3 text-purple-800 dark:text-purple-300">Why This Matters</h3>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Modern websites rely on minimal, predictable layouts not just for aesthetics, but because they align with how the human brain
-                  processes visual information. Good design reduces stress, improves comprehension, and increases user satisfaction.
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-3">
-                  By comparing both versions, you directly experienced how design choices can influence emotion, attention, and decision-making—all
-                  fundamental aspects of cognitive psychology.
-                </p>
-              </section>
-            </div>
-
-            <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-              <p className="text-center text-gray-600 dark:text-gray-400 mb-4">
-                Ready to explore more psychological principles?
-              </p>
-              <div className="flex gap-4 justify-center">
-                <a
-                  href="/demo1"
-                  className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
-                >
-                  Continue to Demo 1: Gestalt Principles
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+    return <LandingExplanation />;
   }
 
   if (showComparison) {
