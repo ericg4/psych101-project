@@ -62,6 +62,9 @@ export default function DopamineExplanation() {
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-3">
               The key insight: <strong>Uncertainty increases engagement more than certainty</strong>, even when the average reward is the same.
             </p>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-4 italic">
+              Source: <a href="https://www.verywellmind.com/what-is-a-variable-ratio-schedule-2796012" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-800 dark:hover:text-gray-200">Verywell Mind - Variable-Ratio Schedule</a>
+            </p>
           </section>
         </div>
 

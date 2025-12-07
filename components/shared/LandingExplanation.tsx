@@ -83,8 +83,7 @@ export default function LandingExplanation() {
                 reduced cognitive demand through whitespace and clear visual hierarchy.
               </p>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-3">
-                Your stress rating reflects how the visual complexity affected your emotional state. Research shows that cluttered interfaces
-                increase cortisol levels and reduce task completion rates by up to 40%.
+                Your stress rating reflects how the visual complexity affected your emotional state.
               </p>
             </section>
 

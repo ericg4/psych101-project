@@ -160,7 +160,7 @@ export default function TrustExplanation({ selectedProductId }: TrustExplanation
             <section className="bg-green-50 dark:bg-green-900/30 border-l-4 border-green-500 dark:border-green-400 p-6 rounded">
               <h3 className="text-xl font-bold mb-3 text-green-800 dark:text-green-300">The Impact of Reviews</h3>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                Research shows that products with higher ratings and more reviews are perceived as more trustworthy and are more likely to be purchased. Negative reviews can significantly impact trust, even if they&apos;re in the minority.
+                Products with higher ratings and more reviews are perceived as more trustworthy and are more likely to be purchased. Negative reviews can significantly impact trust, even if they&apos;re in the minority.
               </p>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-3">
                 You rated all three products, each with different review profiles:
