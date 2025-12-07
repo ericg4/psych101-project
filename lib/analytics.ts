@@ -107,6 +107,14 @@ export async function getAggregatedStats(): Promise<AggregatedStats> {
           };
         }
 
+        // Helper function to map product ID to display name
+        const getProductName = (id: string): string => {
+          if (id === 'headphones') return 'ProSound';
+          if (id === 'earbuds') return 'AudioMax';
+          if (id === 'speaker') return 'Waveline';
+          return id; // Fallback to ID if unknown
+        };
+
         // Product distribution
         const productCounts: Record<string, number> = {};
         trustData.forEach((r) => {
@@ -115,7 +123,7 @@ export async function getAggregatedStats(): Promise<AggregatedStats> {
           }
         });
         const productDistribution = Object.entries(productCounts).map(([key, value]) => ({
-          name: key === 'prosound-headphones' ? 'ProSound' : key === 'audiomax-headphones' ? 'AudioMax' : 'SoundWave',
+          name: getProductName(key),
           value,
         }));
 
@@ -130,7 +138,7 @@ export async function getAggregatedStats(): Promise<AggregatedStats> {
           }
         });
         const avgTrustByProduct = Object.entries(trustByProduct).map(([key, ratings]) => ({
-          product: key === 'prosound-headphones' ? 'ProSound' : key === 'audiomax-headphones' ? 'AudioMax' : 'SoundWave',
+          product: getProductName(key),
           avgTrust: ratings.reduce((sum, r) => sum + r, 0) / ratings.length,
         }));
 
@@ -149,7 +157,7 @@ export async function getAggregatedStats(): Promise<AggregatedStats> {
           }
         });
         const purchaseIntentData = Object.entries(purchaseIntentByProduct).map(([key, value]) => ({
-          product: key === 'prosound-headphones' ? 'ProSound' : key === 'audiomax-headphones' ? 'AudioMax' : 'SoundWave',
+          product: getProductName(key),
           yes: value.yes,
           no: value.no,
         }));
