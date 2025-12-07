@@ -6,17 +6,18 @@ import { usePathname } from 'next/navigation';
 export default function Navigation() {
   const pathname = usePathname();
 
-  const links = [
-    { href: '/', label: 'Landing' },
-    { href: '/demo1', label: 'Demo 1: Gestalt' },
-    { href: '/demo2', label: 'Demo 2: Schema' },
-    { href: '/demo3', label: 'Demo 3: Trust' },
-    { href: '/demo4', label: 'Demo 4: Dopamine' },
-    { href: '/final', label: 'Summary' },
-  ];
+            const links = [
+              { href: '/', label: 'Home' },
+              { href: '/landing', label: 'Demo 0: Cognitive Load' },
+              { href: '/demo1', label: 'Demo 1: Gestalt' },
+              { href: '/demo2', label: 'Demo 2: Schema' },
+              { href: '/demo3', label: 'Demo 3: Trust' },
+              { href: '/demo4', label: 'Demo 4: Dopamine' },
+              { href: '/final', label: 'Summary' },
+            ];
 
   const isActive = (href: string) => {
-    // For landing page, only highlight on exact match
+    // For home page, only highlight on exact match
     if (href === '/') {
       return pathname === '/';
     }

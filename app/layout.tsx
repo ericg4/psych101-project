@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "The Psychology of Website Design",
-  description: "Explore how cognitive psychology, perception, learning, and social influence shape website design through interactive demos.",
+  description: "Explore how psychology principles, perception, learning, and social influence shape website design through interactive demos.",
 };
 
 export default function RootLayout({

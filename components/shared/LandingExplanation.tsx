@@ -108,7 +108,7 @@ export default function LandingExplanation() {
               </p>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-3">
                 By comparing both versions, you directly experienced how design choices can influence emotion, attention, and decision-making—all
-                fundamental aspects of cognitive psychology.
+                fundamental aspects of psychology.
               </p>
             </section>
           </div>

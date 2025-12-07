@@ -2,15 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
+import { ResponsiveContainer, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import { products } from '@/lib/products';
 import Link from 'next/link';
 
 interface TrustExplanationProps {
   selectedProductId?: string;
 }
-
-const COLORS = ['#3b82f6', '#10b981', '#ef4444'];
 
 export default function TrustExplanation({ selectedProductId }: TrustExplanationProps) {
   const [trustStats, setTrustStats] = useState<{
@@ -201,32 +199,6 @@ export default function TrustExplanation({ selectedProductId }: TrustExplanation
                   Based on {trustStats.totalResponses} response{trustStats.totalResponses !== 1 ? 's' : ''} from all users:
                 </p>
 
-                {trustStats.productDistribution.length > 0 && (
-                  <div className="mb-8">
-                    <h4 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">Product Selection Distribution</h4>
-                    <ResponsiveContainer width="100%" height={300}>
-                      <PieChart>
-                        <Pie
-                          data={trustStats.productDistribution}
-                          cx="50%"
-                          cy="50%"
-                          labelLine={false}
-                          label={({ name, percent }) => `${name}: ${percent ? (percent * 100).toFixed(0) : 0}%`}
-                          outerRadius={80}
-                          fill="#8884d8"
-                          dataKey="value"
-                        >
-                          {trustStats.productDistribution.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                          ))}
-                        </Pie>
-                        <Tooltip />
-                        <Legend />
-                      </PieChart>
-                    </ResponsiveContainer>
-                  </div>
-                )}
-
                 {trustStats.avgTrustByProduct.length > 0 && (
                   <div className="mb-8">
                     <h4 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">Average Trust Rating by Product</h4>
@@ -235,7 +207,7 @@ export default function TrustExplanation({ selectedProductId }: TrustExplanation
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="product" />
                         <YAxis domain={[0, 10]} />
-                        <Tooltip />
+                        <Tooltip formatter={(value: number) => value.toFixed(2)} />
                         <Bar dataKey="avgTrust" fill="#3b82f6" />
                       </BarChart>
                     </ResponsiveContainer>
@@ -250,7 +222,7 @@ export default function TrustExplanation({ selectedProductId }: TrustExplanation
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="product" />
                         <YAxis />
-                        <Tooltip />
+                        <Tooltip formatter={(value: number) => value.toFixed(0)} />
                         <Legend />
                         <Bar dataKey="yes" stackId="a" fill="#10b981" name="Would Purchase" />
                         <Bar dataKey="no" stackId="a" fill="#ef4444" name="Would Not Purchase" />
