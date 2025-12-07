@@ -1,11 +1,19 @@
+import IRLExamples from './IRLExamples';
+
+interface IRLExample {
+  image: string;
+  caption: string;
+}
+
 interface ConceptSectionProps {
   title: string;
   concept: string;
   explanation: string;
   examples?: string[];
+  irlExamples?: IRLExample[];
 }
 
-export default function ConceptSection({ title, concept, explanation, examples }: ConceptSectionProps) {
+export default function ConceptSection({ title, concept, explanation, examples, irlExamples }: ConceptSectionProps) {
   return (
     <section className="mb-12">
       <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">{title}</h2>
@@ -22,6 +30,9 @@ export default function ConceptSection({ title, concept, explanation, examples }
             ))}
           </ul>
         </div>
+      )}
+      {irlExamples && irlExamples.length > 0 && (
+        <IRLExamples examples={irlExamples} />
       )}
     </section>
   );

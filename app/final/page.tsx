@@ -60,6 +60,16 @@ export default function Final() {
                 'Whitespace improves readability and comprehension by 20%',
                 'Clear visual hierarchies guide attention automatically',
               ]}
+              irlExamples={[
+                {
+                  image: '/examples/google.png',
+                  caption: 'Google\'s clean homepage demonstrates minimal cognitive load with a single search bar and minimal distractions, allowing users to focus on their primary task.',
+                },
+                {
+                  image: '/examples/packed-site.png',
+                  caption: 'This cluttered website demonstrates cognitive overload in action—with competing visual elements, inconsistent spacing, and information density that exceeds working memory capacity, making it nearly impossible to focus on any single task.',
+                },
+              ]}
             />
 
             <ConceptSection
@@ -70,6 +80,16 @@ export default function Final() {
                 'Grouped elements are perceived as related',
                 'Similar shapes and colors are automatically categorized together',
                 'Aligned elements create visual flow and reduce search time',
+              ]}
+              irlExamples={[
+                {
+                  image: '/examples/craigslist.png',
+                  caption: 'Craigslist\'s homepage demonstrates strong Gestalt principles through clear groupings: housing listings are clustered together, job categories form distinct sections, and similar items share consistent formatting. Despite its dated visual style, the logical organization makes it easy to scan and find relevant information.',
+                },
+                {
+                  image: '/examples/reels.png',
+                  caption: 'Instagram\'s grid layout uses Gestalt principles: similar-sized posts create visual continuity, and the consistent spacing creates clear groupings that guide the eye.',
+                },
               ]}
             />
 
@@ -82,6 +102,16 @@ export default function Final() {
                 'Violating expectations increases cognitive load and reduces trust',
                 'Standard UI patterns reduce learning curve for new users',
               ]}
+              irlExamples={[
+                {
+                  image: '/examples/amazon-homepage.png',
+                  caption: 'Amazon\'s homepage is a classic example of a familiar layout that matches user expectations, enabling instant recognition and faster decision-making.',
+                },
+                {
+                  image: '/examples/worst.png',
+                  caption: 'This website violates familiar design schemas with unconventional navigation placement, inconsistent visual hierarchy, and unfamiliar interaction patterns, forcing users to rely on slow recall processes instead of fast recognition.',
+                },
+              ]}
             />
 
             <ConceptSection
@@ -92,6 +122,16 @@ export default function Final() {
                 'Products with more reviews are perceived as more trustworthy',
                 'Social proof increases conversion rates by 15-30%',
                 'Review quantity and quality both impact purchase decisions',
+              ]}
+              irlExamples={[
+                {
+                  image: '/examples/amazon.png',
+                  caption: 'Amazon prominently displays review counts and star ratings. Products with thousands of reviews feel more trustworthy than those with just a few, even with similar average ratings.',
+                },
+                {
+                  image: '/examples/usedby.png',
+                  caption: 'The "Companies we\'ve served" section uses social proof by showing recognizable brand logos, signaling that other trusted companies use their services—a powerful trust-building technique.',
+                },
               ]}
             />
 
@@ -104,6 +144,16 @@ export default function Final() {
                 'Uncertainty increases dopamine release during anticipation',
                 'Spin wheels and similar mechanics exploit variable reward patterns',
               ]}
+              irlExamples={[
+                {
+                  image: '/examples/temu.png',
+                  caption: 'Temu\'s "Spin to Win" wheel creates anticipation and excitement through variable rewards. Users never know what discount they\'ll get, triggering dopamine release during the spin.',
+                },
+                {
+                  image: '/examples/reels.png',
+                  caption: 'Instagram Reels uses variable rewards—each scroll reveals unpredictable content. You never know if the next video will be funny, inspiring, or interesting, creating a "just one more" compulsion to keep scrolling.',
+                },
+              ]}
             />
 
             <ConceptSection
@@ -114,6 +164,16 @@ export default function Final() {
                 'Dark patterns include hidden costs, forced continuity, and false urgency',
                 'Ethical design respects user autonomy and provides clear choices',
                 'Transparency builds long-term trust over short-term gains',
+              ]}
+              irlExamples={[
+                {
+                  image: '/examples/temu.png',
+                  caption: 'Spin wheels can be ethical when transparent about odds and outcomes, but become dark patterns when they create false urgency ("Limited time!") or hide actual discount values.',
+                },
+                {
+                  image: '/examples/reels.png',
+                  caption: 'Infinite scroll feeds exploit variable rewards to maximize engagement, potentially leading to compulsive use. Ethical design would include breaks, time limits, or clear exit points.',
+                },
               ]}
             />
           </div>
